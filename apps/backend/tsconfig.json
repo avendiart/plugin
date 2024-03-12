@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "declarationMap": true,
+    "inlineSourceMap": true,
+    "outDir": "dist"
+  }
+}

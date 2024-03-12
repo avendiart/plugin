@@ -1,0 +1,18 @@
+{
+  "packageManager": "pnpm@8.9.0",
+  "scripts": {
+    "bootstrap": "pnpm run reset && pnpm install && pnpm run build",
+    "build": "turbo run build --no-daemon --cache-dir=${TURBO_CACHE_DIR-./node_modules/.cache/turbo}",
+    "watch": "turbo run watch --no-daemon --cache-dir=${TURBO_CACHE_DIR-./node_modules/.cache/turbo}",
+    "start": "turbo run start --no-daemon --cache-dir=${TURBO_CACHE_DIR-./node_modules/.cache/turbo}",
+    "test": "turbo run test --no-daemon --cache-dir=${TURBO_CACHE_DIR-./node_modules/.cache/turbo}",
+    "prettier-check": "prettier --check '**/*.{js,ts,jsx,tsx,css,json,md,yml,yaml}'",
+    "prettier-write": "prettier --write '**/*.{js,ts,jsx,tsx,css,json,md,yml,yaml}'",
+    "reset": "git clean -fxd -e *.env -e *.env.*"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "turbo": "^1.12.4"
+  }
+}

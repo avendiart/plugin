@@ -1,0 +1,19 @@
+{
+  "name": "frontend",
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vite-plugin-singlefile": "^2.0.1"
+  }
+}

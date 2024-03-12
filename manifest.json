@@ -1,0 +1,8 @@
+{
+  "name": "style-tokens",
+  "id": "1264542488242869898",
+  "api": "1.0.0",
+  "ui": "apps/frontend/dist/index.html",
+  "main": "apps/backend/dist/index.js",
+  "editorType": ["figma"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.88.0",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6"
+  }
+}
