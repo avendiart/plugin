@@ -1,3 +1,4 @@
 import { render } from 'react-dom'
+import { Application } from './application'
 
-render(<h1>App</h1>, document.getElementById('root'))
+render(<Application />, document.getElementById('root'))
