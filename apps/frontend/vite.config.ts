@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [viteSingleFile(), react()],
   build: {
     emptyOutDir: false,
+    minify: false,
   },
 })

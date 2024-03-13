@@ -3,8 +3,9 @@ import './tailwind.css'
 import { setup } from '@fabric/domain'
 import { useEffect } from 'react'
 import { Provider } from 'react-redux'
-import { TokensScreen } from './screens/tokens'
 import { useStore } from './state/use-store'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router/router'
 
 export function Application() {
   const store = useStore()
@@ -15,7 +16,7 @@ export function Application() {
 
   return (
     <Provider store={store}>
-      <TokensScreen />
+      <RouterProvider router={router} />
     </Provider>
   )
 }

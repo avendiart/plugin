@@ -5,6 +5,7 @@ export function createStore(preloadedState?: {
   tokens?: ReturnType<typeof tokensReducer>
 }) {
   const store = configureStore({
+    devTools: true,
     preloadedState,
     reducer: {
       tokens: tokensReducer,

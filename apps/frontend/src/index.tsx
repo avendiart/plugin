@@ -1,4 +1,4 @@
-import { render } from 'react-dom'
 import { Application } from './application'
+import { createRoot } from 'react-dom/client'
 
-render(<Application />, document.getElementById('root'))
+createRoot(document.getElementById('root')!).render(<Application />)

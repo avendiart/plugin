@@ -9,10 +9,10 @@ export function useStore() {
   useEffect(() => {
     const listener = (
       event: MessageEvent<{
-        pluginMessage: BackendMessage
+        pluginMessage?: BackendMessage
       }>,
     ) => {
-      if (event.data.pluginMessage.type === 'state-loaded') {
+      if (event.data.pluginMessage?.type === 'state-loaded') {
         setInitialState(event.data.pluginMessage.state)
       }
     }
