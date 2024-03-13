@@ -1,14 +1,19 @@
-type TreeProps = {
+import { forwardRef } from 'react'
+
+export type TreeProps = {
   level?: number
   items?: (config: { level: number }) => JSX.Element[]
 }
 
-export function Tree({ items, level = 0 }: TreeProps) {
+export const Tree = forwardRef<
+  HTMLDivElement,
+  JSX.IntrinsicElements['div'] & TreeProps
+>(function Tree({ items, level = 0, ...props }, ref) {
   return (
-    <div>
+    <div ref={ref} {...props}>
       {items?.({
         level,
       })}
     </div>
   )
-}
+})

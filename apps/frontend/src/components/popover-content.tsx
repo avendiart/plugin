@@ -8,7 +8,10 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       <Content
         ref={ref}
         sideOffset={4}
-        className={twMerge('rounded-sm bg-white shadow-xl', className)}
+        className={twMerge(
+          'animate-in fade-in rounded-sm bg-white shadow-xl duration-200',
+          className,
+        )}
         {...props}
       />
     )
