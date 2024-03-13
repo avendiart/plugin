@@ -5,11 +5,13 @@
     "module": "esnext",
     "esModuleInterop": true,
     "isolatedModules": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
+    "declaration": true,
     "skipLibCheck": true,
+    "declarationMap": true,
     "inlineSourceMap": true,
-    "jsx": "react-jsx",
-    "noEmit": true
-  }
+    "outDir": "dist/mjs"
+  },
+  "include": ["src"]
 }

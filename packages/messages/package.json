@@ -1,0 +1,30 @@
+{
+  "name": "@fabric/messages",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "scripts": {
+    "build": "del dist && run-p build-*",
+    "build-mjs": "tsc",
+    "build-cjs": "tsc --module commonjs --outDir dist/cjs",
+    "watch": "run-p watch-*",
+    "watch-mjs": "tsc --watch --preserveWatchOutput",
+    "watch-cjs": "tsc --watch --preserveWatchOutput --module commonjs --outDir dist/cjs",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@fabric/domain": "workspace:^"
+  },
+  "devDependencies": {
+    "del-cli": "^5.1.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.3.3"
+  }
+}
