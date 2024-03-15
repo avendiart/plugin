@@ -16,7 +16,10 @@ export const updateSizeToken = produceWithPatches(
         const groupItems = tokens.items.filter(item =>
           group.items.includes(item.id),
         )
-        if (groupItems.some(item => item.name === update.name)) {
+        const itemWithSameName = groupItems.find(
+          item => item.name === update.name,
+        )
+        if (itemWithSameName && itemWithSameName.id !== id) {
           throw new Error(
             `Item with name=${update.name} already in group=${group.id}`,
           )

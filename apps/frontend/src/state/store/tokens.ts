@@ -8,6 +8,9 @@ import {
   removeItem,
   removeItemFromGroup,
   removeItemFromRoot,
+  updateColorToken,
+  updateGroup,
+  updateSizeToken,
 } from '@fabric/domain'
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
@@ -98,6 +101,36 @@ export const removeItemFromRootAction = createAction(
   },
 )
 
+export const updateColorTokenAction = createAction(
+  'tokens/updateColorToken',
+  (payload: { id: string; name: string; value: string }) => {
+    return {
+      type: 'tokens/updateColorToken',
+      payload,
+    }
+  },
+)
+
+export const updateGroupAction = createAction(
+  'tokens/updateGroup',
+  (payload: { id: string; name: string }) => {
+    return {
+      type: 'tokens/updateGroup',
+      payload,
+    }
+  },
+)
+
+export const updateSizeTokenAction = createAction(
+  'tokens/updateSizeToken',
+  (payload: { id: string; name: string; value: string }) => {
+    return {
+      type: 'tokens/updateSizeToken',
+      payload,
+    }
+  },
+)
+
 export const tokensReducer = createReducer(initialValue, builder => {
   builder
     .addCase(addItemToGroupAction, (state, action) => {
@@ -157,6 +190,26 @@ export const tokensReducer = createReducer(initialValue, builder => {
     })
     .addCase(removeItemFromRootAction, (state, action) => {
       const [newState] = removeItemFromRoot(state, action.payload.id)
+      return newState
+    })
+    .addCase(updateColorTokenAction, (state, action) => {
+      const [newState] = updateColorToken(state, action.payload.id, {
+        name: action.payload.name,
+        value: action.payload.value,
+      })
+      return newState
+    })
+    .addCase(updateGroupAction, (state, action) => {
+      const [newState] = updateGroup(state, action.payload.id, {
+        name: action.payload.name,
+      })
+      return newState
+    })
+    .addCase(updateSizeTokenAction, (state, action) => {
+      const [newState] = updateSizeToken(state, action.payload.id, {
+        name: action.payload.name,
+        value: action.payload.value,
+      })
       return newState
     })
 })

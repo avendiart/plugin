@@ -19,7 +19,11 @@ import {
   removeItemAction,
   removeItemFromGroupAction,
   removeItemFromRootAction,
+  updateColorTokenAction,
+  updateGroupAction,
+  updateSizeTokenAction,
 } from '../../state/store/tokens'
+import { EditableValue } from './editable-value'
 
 type TokensTableProps = {
   parentId?: string
@@ -83,7 +87,7 @@ export function TokensTable({ parentId }: TokensTableProps) {
                     appDispatch(
                       createColorTokenAction({
                         name: `color-${Number(lastPlaceholderToken?.name.replace('color-', '') ?? 0) + 1}`,
-                        value: '16px',
+                        value: '#FFFFFF',
                         id,
                       }),
                     )
@@ -105,16 +109,16 @@ export function TokensTable({ parentId }: TokensTableProps) {
         <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              <th className="w-1/4 px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
                 Name
               </th>
-              <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              <th className="w-1/4 px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
                 Type
               </th>
-              <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              <th className="w-1/4 px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
                 Value
               </th>
-              <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              <th className="w-1/4 px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
                 Preview
               </th>
             </tr>
@@ -127,7 +131,37 @@ export function TokensTable({ parentId }: TokensTableProps) {
                   <ContextMenuTrigger asChild>
                     <tr className="border-t border-zinc-100 data-[state=open]:bg-zinc-100 dark:border-zinc-700 dark:data-[state=open]:bg-zinc-700">
                       <td className="px-3 py-2 text-left font-sans text-xs text-black dark:text-white">
-                        {item.name}
+                        <EditableValue
+                          value={item.name}
+                          onChange={name => {
+                            if (item.type === 'group') {
+                              appDispatch(
+                                updateGroupAction({
+                                  id: item.id,
+                                  name,
+                                }),
+                              )
+                            }
+                            if (item.type === 'color') {
+                              appDispatch(
+                                updateColorTokenAction({
+                                  id: item.id,
+                                  name,
+                                  value: item.value,
+                                }),
+                              )
+                            }
+                            if (item.type === 'size') {
+                              appDispatch(
+                                updateSizeTokenAction({
+                                  id: item.id,
+                                  name,
+                                  value: item.value,
+                                }),
+                              )
+                            }
+                          }}
+                        />
                       </td>
                       {item.type === 'group' ? (
                         <td
@@ -142,7 +176,29 @@ export function TokensTable({ parentId }: TokensTableProps) {
                             {item.type}
                           </td>
                           <td className="px-3 py-2 text-left font-sans text-xs text-black dark:text-white">
-                            {item.value}
+                            <EditableValue
+                              value={item.value}
+                              onChange={value => {
+                                if (item.type === 'color') {
+                                  appDispatch(
+                                    updateColorTokenAction({
+                                      id: item.id,
+                                      name: item.name,
+                                      value,
+                                    }),
+                                  )
+                                }
+                                if (item.type === 'size') {
+                                  appDispatch(
+                                    updateSizeTokenAction({
+                                      id: item.id,
+                                      name: item.name,
+                                      value,
+                                    }),
+                                  )
+                                }
+                              }}
+                            />
                           </td>
                           <td className="px-3 py-2 text-left font-sans text-xs text-black dark:text-white">
                             {item.value}
