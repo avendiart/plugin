@@ -10,6 +10,14 @@ export const selectRootGroups = createSelector(
       .filter((item): item is TokensGroup => item?.type === 'group'),
 )
 
+export const selectRootItems = createSelector(
+  (state: AppState) => state.tokens,
+  tokens =>
+    tokens.root
+      .map(id => tokens.items.find(item => item.id === id))
+      .filter((item): item is NonNullable<typeof item> => item != null),
+)
+
 export const selectGroupGroups = (id: string) =>
   createSelector(
     (state: AppState) => state.tokens,
@@ -26,4 +34,17 @@ export const selectGroupGroups = (id: string) =>
           ),
         )
         .filter((item): item is TokensGroup => item != null) ?? [],
+  )
+
+export const selectGroupItems = (id: string) =>
+  createSelector(
+    (state: AppState) => state.tokens,
+    tokens =>
+      tokens.items
+        .find(
+          (item): item is TokensGroup =>
+            item.type === 'group' && item.id === id,
+        )
+        ?.items.map(id => tokens.items.find(item => item.id === id))
+        .filter((item): item is NonNullable<typeof item> => item != null) ?? [],
   )

@@ -2,7 +2,9 @@ import {
   Tokens,
   addItemToGroup,
   addItemToRoot,
+  createColorToken,
   createGroup,
+  createSizeToken,
   removeItem,
   removeItemFromGroup,
   removeItemFromRoot,
@@ -36,11 +38,31 @@ export const addItemToRootAction = createAction(
   },
 )
 
+export const createColorTokenAction = createAction(
+  'tokens/createColorToken',
+  (payload: { id: string; name: string; value: string }) => {
+    return {
+      type: 'tokens/createColorToken',
+      payload,
+    }
+  },
+)
+
 export const createGroupAction = createAction(
   'tokens/createGroup',
   (payload: { id: string; name: string }) => {
     return {
       type: 'tokens/createGroup',
+      payload,
+    }
+  },
+)
+
+export const createSizeTokenAction = createAction(
+  'tokens/createSizeToken',
+  (payload: { id: string; name: string; value: string }) => {
+    return {
+      type: 'tokens/createSizeToken',
       payload,
     }
   },
@@ -95,11 +117,29 @@ export const tokensReducer = createReducer(initialValue, builder => {
       const [newState] = addItemToRoot(state, action.payload.id)
       return newState
     })
+    .addCase(createColorTokenAction, (state, action) => {
+      const [newState] = createColorToken(
+        state,
+        action.payload.id,
+        action.payload.name,
+        action.payload.value,
+      )
+      return newState
+    })
     .addCase(createGroupAction, (state, action) => {
       const [newState] = createGroup(
         state,
         action.payload.id,
         action.payload.name,
+      )
+      return newState
+    })
+    .addCase(createSizeTokenAction, (state, action) => {
+      const [newState] = createSizeToken(
+        state,
+        action.payload.id,
+        action.payload.name,
+        action.payload.value,
       )
       return newState
     })

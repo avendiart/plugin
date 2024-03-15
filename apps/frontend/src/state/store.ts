@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { tokensReducer } from './store/tokens'
+import { FrontendMessage } from '@fabric/messages'
 
 export function createStore(preloadedState?: {
   tokens?: ReturnType<typeof tokensReducer>
@@ -17,7 +18,7 @@ export function createStore(preloadedState?: {
         pluginMessage: {
           type: 'state-updated',
           payload: store.getState(),
-        },
+        } satisfies FrontendMessage,
       },
       '*',
     )
