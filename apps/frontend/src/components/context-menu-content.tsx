@@ -18,7 +18,7 @@ export const ContextMenuContent = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'animate-in fade-in-0 rounded-sm bg-white shadow-xl duration-200',
+        'animate-in fade-in-0 rounded bg-white shadow-xl duration-200 dark:bg-zinc-800',
         className,
       )}
     >

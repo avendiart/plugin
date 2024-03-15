@@ -9,7 +9,10 @@ export const IconButton = forwardRef<
     <button
       ref={ref}
       {...props}
-      className={twMerge('text-gray-600', className)}
+      className={twMerge(
+        'text-gray-600 outline-none dark:text-gray-400',
+        className,
+      )}
     />
   )
 })

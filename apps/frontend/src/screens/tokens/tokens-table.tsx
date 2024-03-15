@@ -14,33 +14,43 @@ export function TokensTable({ parentId }: TokensTableProps) {
   )
 
   return (
-    <table className="w-full border-collapse">
-      <thead>
-        <tr>
-          <th className="p-1 text-left font-sans text-base font-semibold">
-            Name
-          </th>
-          <th className="p-1 text-left font-sans text-base font-semibold">
-            Type
-          </th>
-          <th className="p-1 text-left font-sans text-base font-semibold">
-            Value
-          </th>
-          <th className="p-1 text-left font-sans text-base font-semibold">
-            Preview
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {groups.map(group => (
-          <tr key={group.id}>
-            <td className="p-1 text-left font-sans text-base">{group.name}</td>
-            <td className="p-1 text-left font-sans text-base" colSpan={3}>
-              {group.type}
-            </td>
+    <div className="rounded bg-white dark:bg-zinc-800">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              Name
+            </th>
+            <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              Type
+            </th>
+            <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              Value
+            </th>
+            <th className="px-3 py-2 text-left font-sans text-xs font-semibold text-black dark:text-white">
+              Preview
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {groups.map(group => (
+            <tr
+              key={group.id}
+              className="border-t border-zinc-100 dark:border-zinc-700"
+            >
+              <td className="px-3 py-2 text-left font-sans text-xs text-black dark:text-white">
+                {group.name}
+              </td>
+              <td
+                className="px-3 py-2 text-left font-sans text-xs text-black dark:text-white"
+                colSpan={3}
+              >
+                {group.type}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }

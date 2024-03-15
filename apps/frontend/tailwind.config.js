@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Source Sans 3"', ...defaultTheme.fontFamily.sans],
+        sans: [...defaultTheme.fontFamily.sans],
       },
     },
   },
   plugins: [animate],
-  darkMode: 'class',
+  darkMode: ['class', '.figma-dark'],
 }

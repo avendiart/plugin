@@ -10,7 +10,9 @@ export function TokensScreen() {
     <div className="grid grid-cols-[280px_auto]">
       <div className="grid grid-rows-[auto_1fr] gap-4 p-4">
         <div className="flex justify-between">
-          <span className="font-sans text-base font-semibold">Tokens</span>
+          <span className="font-sans text-xs font-semibold text-black dark:text-white">
+            Tokens
+          </span>
           <CreateGroupButton />
         </div>
         <TokensTree />
