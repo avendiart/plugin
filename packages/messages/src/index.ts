@@ -14,5 +14,13 @@ export type StateUpdatedMessage = {
   }
 }
 
+export type ResizingMessage = {
+  type: 'resize'
+  payload: {
+    clientX: number
+    clientY: number
+  }
+}
+
 export type BackendMessage = StateLoadedMessage
-export type FrontendMessage = StateUpdatedMessage
+export type FrontendMessage = StateUpdatedMessage | ResizingMessage

@@ -3,9 +3,10 @@ import './tailwind.css'
 import { setup } from '@fabric/domain'
 import { useEffect } from 'react'
 import { Provider } from 'react-redux'
-import { useStore } from './state/use-store'
 import { RouterProvider } from 'react-router-dom'
+import { WindowResizer } from './components/window-resizer'
 import { router } from './router/router'
+import { useStore } from './state/use-store'
 
 export function Application() {
   const store = useStore()
@@ -17,6 +18,7 @@ export function Application() {
   return (
     <Provider store={store}>
       <RouterProvider router={router} />
+      <WindowResizer />
     </Provider>
   )
 }
