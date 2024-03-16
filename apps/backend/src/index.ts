@@ -9,7 +9,7 @@ figma.showUI(__html__, {
 
 figma.ui.onmessage = async (message: FrontendMessage) => {
   if (message.type === 'state-updated') {
-    figma.clientStorage.setAsync('state', message.payload)
+    figma.root.setPluginData('state', JSON.stringify(message.payload))
   }
   if (message.type === 'resize') {
     figma.ui.resize(
@@ -19,6 +19,13 @@ figma.ui.onmessage = async (message: FrontendMessage) => {
   }
 }
 
-figma.clientStorage.getAsync('state').then(state => {
-  figma.ui.postMessage({ type: 'state-loaded', state } satisfies BackendMessage)
+figma.on('run', () => {
+  const stateJSON = figma.root.getPluginData('state')
+  if (stateJSON) {
+    const state = JSON.parse(stateJSON)
+    figma.ui.postMessage({
+      type: 'state-loaded',
+      state,
+    } satisfies BackendMessage)
+  }
 })
