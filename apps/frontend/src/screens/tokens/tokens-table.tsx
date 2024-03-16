@@ -23,6 +23,7 @@ import {
   updateGroupAction,
   updateSizeTokenAction,
 } from '../../state/store/tokens'
+import { Breadcrumbs } from './breadcrumbs'
 import { EditableValue } from './editable-value'
 
 type TokensTableProps = {
@@ -37,7 +38,8 @@ export function TokensTable({ parentId }: TokensTableProps) {
 
   return (
     <div className="grid grid-rows-[auto_1fr] gap-4">
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <Breadcrumbs groupId={parentId} />
         <DropdownMenu
           trigger={
             <DropdownMenuTrigger asChild>
