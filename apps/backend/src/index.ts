@@ -4,6 +4,7 @@ figma.showUI(__html__, {
   themeColors: true,
   width: 920,
   height: 640,
+  title: 'Fabric',
 })
 
 figma.ui.onmessage = async (message: FrontendMessage) => {
