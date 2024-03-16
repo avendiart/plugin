@@ -25,7 +25,7 @@ export function WindowResizer() {
 
   return (
     <div
-      className="fixed bottom-0 right-0 h-4 w-4 cursor-nw-resize"
+      className="fixed bottom-0 right-0 h-4 w-4 cursor-se-resize"
       onPointerMove={event => {
         if (resizing) {
           resize(event.clientX, event.clientY)
