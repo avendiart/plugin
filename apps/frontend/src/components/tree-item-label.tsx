@@ -15,8 +15,9 @@ export const TreeItemLabel = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'rounded py-2 text-xs font-medium text-zinc-900 hover:bg-zinc-200 dark:text-white dark:hover:bg-zinc-800',
-        active && 'bg-zinc-200 dark:bg-zinc-800',
+        'select-none rounded py-2 text-xs font-medium text-zinc-900 hover:bg-zinc-100 dark:text-white dark:hover:bg-zinc-800',
+        active &&
+          'bg-zinc-200 hover:bg-zinc-200 dark:bg-zinc-700 dark:hover:bg-zinc-700',
         className,
       )}
       style={{
