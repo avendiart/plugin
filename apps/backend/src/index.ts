@@ -16,10 +16,19 @@ figma.ui.onmessage = async (message: FrontendMessage) => {
       Math.floor(message.payload.clientX),
       Math.floor(message.payload.clientY),
     )
+    figma.clientStorage.setAsync('windowSize', {
+      width: Math.floor(message.payload.clientX),
+      height: Math.floor(message.payload.clientY),
+    })
   }
 }
 
-figma.on('run', () => {
+figma.on('run', async () => {
+  const windowSize = await figma.clientStorage.getAsync('windowSize')
+  if (windowSize) {
+    figma.ui.resize(windowSize.width, windowSize.height)
+  }
+
   const stateJSON = figma.root.getPluginData('state')
   if (stateJSON) {
     const state = JSON.parse(stateJSON)
